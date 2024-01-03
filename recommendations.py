@@ -170,7 +170,7 @@ def topMatches(prefs, person, n=5, similarity=sim_pearson_distance):
 
 ################eight step
 #content based filtering
-def calculateSimilarItems(prefs,n=10):
+def calculateSimilarItems(prefs,n=10, sim=sim_euclidean_distance):
     #create dict of items showing which other items they are most similar to
     
     result={}
@@ -183,7 +183,7 @@ def calculateSimilarItems(prefs,n=10):
         c+=1
         if c%100==0: print("%d / %d" %(c,len(itemPrefs)))
         #find most similar items to this one
-        scores = topMatches(itemPrefs, item, n=n, similarity=sim_euclidean_distance)
+        scores = topMatches(itemPrefs, item, n=n, similarity=sim)
         result[item] = scores
     return result
 #itemsim=recommendations.calculateSimilarItems(recommendations.critics)
